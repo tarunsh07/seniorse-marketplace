@@ -241,7 +241,7 @@ a.nav-link:hover {
 }
 
 body.index-page-bg {
-    background-image: url('/assets/background.png');
+    background-image: url('/assets/background.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -249,7 +249,7 @@ body.index-page-bg {
 }
 
 body.auth-page-bg {
-    background-image: url('/assets/bcglogin.png');
+    background-image: url('/assets/bcglogin.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
