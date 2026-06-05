@@ -1,4 +1,6 @@
 const nodemailer = require("nodemailer");
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first"); // Force IPv4 to prevent connection timeouts on cloud hosts
 
 const sendOtpEmail = async (email, otp) => {
     const transporter = nodemailer.createTransport({
