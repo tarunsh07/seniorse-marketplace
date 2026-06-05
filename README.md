@@ -54,7 +54,7 @@ This platform provides a trusted, students-only environment where users can list
 
 | Feature | Description |
 |---|---|
-| **Student-Only Verification** | Strict platform access using Nodemailer to send 6-digit OTPs exclusively to official college email addresses (e.g., `@nsut.ac.in`) |
+| **Student-Only Verification** | Strict platform access using Brevo API to send 6-digit OTPs exclusively to official college email addresses (e.g., `@nsut.ac.in`) |
 | **User Authentication** | Secure signup/login with Passport.js using salted password hashing via `passport-local-mongoose` |
 | **Full CRUD Operations** | Create, Read, Update, and Delete listings with image uploads |
 | **Cloud Image Storage** | All listing images are uploaded to and served from Cloudinary CDN |
@@ -83,7 +83,7 @@ This platform provides a trusted, students-only environment where users can list
 | **Express.js** (v5) | Web application framework |
 | **Mongoose** (v9) | MongoDB ODM for data modeling |
 | **Passport.js** | Authentication middleware |
-| **Nodemailer** | Sending OTP emails for student verification |
+| **Brevo API** | Sending OTP emails via HTTP to bypass cloud SMTP restrictions |
 | **Joi** | Request payload validation |
 | **Multer** | Multipart form-data / file upload handling |
 
@@ -328,8 +328,7 @@ CLOUD_API_KEY=your_cloudinary_api_key
 CLOUD_API_SECRET=your_cloudinary_api_secret
 ATLASDB_URL=your_mongodb_atlas_connection_string
 SECRET=your_session_secret_key
-EMAIL_USER=your_gmail_address
-EMAIL_PASS=your_16_digit_gmail_app_password
+BREVO_API_KEY=your_brevo_api_key
 ```
 
 > **Important:** Never commit the `.env` file to version control. It is already included in `.gitignore`.
