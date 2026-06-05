@@ -1,0 +1,82 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row mt-3">
+    <div class="col-8 offset-2">
+    <br>
+    <h3>Create a new listing</h3>
+    <div id="priceFlash" class="alert alert-warning alert-dismissible mt-3" style="display: none;">
+        If you are giving it for free, set the price to 0
+        <button type="button" class="btn-close" onclick="document.getElementById('priceFlash').style.display='none'"></button>
+    </div>
+    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data"> <!-- novalidate: sett the default broser dependent sytling for required vields to null.. and this class applies bootstrap styling for required fields -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" placeholder="Enter Title" type="text" class="form-control" required> 
+            <div class="valid-feedback">Title looks good!</div>
+            <div class="invalid-feedback">Please enter a title</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" placeholder="Enter Description" type="text" class="form-control" required></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input name="listing[image]" type="file" class="form-control" required>
+          </div>
+          
+          <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" placeholder="Enter listing price" type="text" class="form-control" onfocus="document.getElementById('priceFlash').style.display='block'" required>
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="listingType" class="form-label">Listing Type</label>
+                    <select name="listing[listingType]" id="listingType" class="form-select" required>
+                        <option value="" disabled selected>Select a Type</option>
+                        <option value="For Sale">For Sale</option>
+                        <option value="For Rent (Per Day)">For Rent (Per Day)</option>
+                        <option value="Free">Free</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a listing type</div>
+                </div>
+          </div>
+
+          <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select name="listing[category]" id="category" class="form-select" required>
+                  <option value="" disabled selected>Select a Category</option>
+                  <option value="Calculator">Calculator</option>
+                  <option value="Books">Books</option>
+                  <option value="Notes">Notes</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Apparel">Apparel</option>
+                  <option value="Others">Others</option>
+              </select>
+              <div class="invalid-feedback">Please select a category</div>
+          </div>
+          
+          <hr>
+          <h5>Contact Details</h5>
+          <div class="row">
+              <div class="mb-3 col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input name="listing[contact][email]" placeholder="Enter Email" type="email" class="form-control" required>
+                  <div class="invalid-feedback">Please provide a valid email</div>
+              </div>
+              <div class="mb-3 col-md-6">
+                  <label for="whatsapp" class="form-label">WhatsApp (Optional)</label>
+                  <input name="listing[contact][whatsapp]" placeholder="Enter WhatsApp number" type="text" class="form-control">
+              </div>
+          </div>
+
+          <button class="btn btn-dark add-btn mt-3">Add</button>
+    </form>
+    <br>
+    </div>   
+    </div>
+</body>  

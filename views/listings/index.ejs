@@ -1,0 +1,68 @@
+<% layout("/layouts/boilerplate") %>
+
+<script>
+    document.body.classList.add('index-page-bg');
+</script>
+
+        <% 
+        let headingText = "All Listed Stuff";
+        if (typeof category !== 'undefined' && category) {
+            headingText = "Listed " + category;
+        }
+    %>
+    <div class="text-center mt-4 mb-4">
+        <h2 class="fw-bold" style="color: #333; letter-spacing: 1px;"><%= headingText %></h2>
+        <hr class="mx-auto mt-2" style="width: 60px; border: 2px solid #FE6602; opacity: 1; border-radius: 5px;">
+    </div>
+
+        <% if (allListings.length===0) { %>
+            <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center;">
+                <img src="/assets/noitems.png" alt="No items found"
+                    style="width: 900px; max-width: 90%; margin: 0 auto; display: inline-block;">
+            </div>
+            <% } else { %>
+                <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+                    <% for(let listing of allListings){ %>
+                        <a href="/listings/<%= listing._id %>" class="listing-link">
+                            <div class="card col listing-card">
+                                <img src="<%= listing.image.url  %>" class="card-img-top" alt="listing_image"
+                                    style="height: 20rem; border: 1px dotted #FD9D03; <%= listing.isAvailable === false ? 'filter: grayscale(80%) opacity(60%);' : '' %>">
+                                <% if (listing.isAvailable === false) { %>
+                                    <div class="card-img-overlay d-flex align-items-center justify-content-center" style="background-color: rgba(255, 255, 255, 0.4);">
+                                        <h3 class="fw-bold text-danger text-uppercase" style="text-shadow: 1px 1px 2px white; background-color: rgba(255,255,255,0.8); padding: 5px 15px; border-radius: 5px;">Not Available !</h3>
+                                    </div>
+                                <% } else { %>
+                                    <div class="card-img-overlay"></div>
+                                <% } %>
+                                <div class="card-body mt-1 p-3" style="border: 1px dotted #FE6602; border-radius: 8px;">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div>
+                                            <h5 class="mb-1 fw-bold text-dark" style="font-size: 1.1rem;"><%= listing.title %></h5>
+                                            <p class="mb-0 text-muted" style="font-size: 0.9rem; font-weight: 500;">
+                                                Posted by: <%= listing.owner.username %>
+                                            </p>
+                                        </div>
+                                        <div class="text-end ms-2">
+                                            <div class="fw-bold text-dark" style="font-size: 1.1rem;">&#8377 <%= (listing.listingType === 'Free' || listing.price === 0) ? 0 : listing.price.toLocaleString("en-IN") %></div>
+                                            <div class="mt-1">
+                                                <% if (listing.listingType === 'Free' || listing.price === 0) { %>
+                                                    <span class="badge rounded-pill bg-success px-3 py-2">Free</span>
+                                                <% } else if (listing.listingType === 'For Sale') { %>
+                                                    <span class="badge rounded-pill px-3 py-2" style="background-color: #FE6602; color: white;">For Sale</span>
+                                                <% } else if (listing.listingType === 'For Rent (Per Day)') { %>
+                                                    <span class="badge rounded-pill px-3 py-2" style="background-color: #FD9D04; color: white;">For Rent</span>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="badge rounded-pill bg-dark"><%= listing.category %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <% } %>
+                </div>
+                <% } %>
+    </body>

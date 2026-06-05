@@ -1,0 +1,257 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.navbar {
+    height: 3.5rem;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+    background-color: white;
+}
+
+.nav-link {
+    color: #222222 !important;
+    /* !important is used to override custom styling of bootstrap */
+}
+
+
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+    font-size: 0.75rem;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+    color: #222222;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    font-size: 0.95rem;
+    margin: 0 0.4rem;
+}
+
+.f-info {
+    text-align: center;
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+    padding: 0.4rem 0;
+}
+
+footer {
+    background-color: #ebebeb;
+    margin-top: auto;
+}
+
+
+/* cards */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400 !important;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+/* Navbar Search styles */
+.search-label {
+    color: #000000 !important;
+}
+
+.nav-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #222222;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.nav-icon-container .icon-text {
+    font-size: 0.7rem;
+    margin-top: 2px;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-icon-container .material-symbols-outlined {
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-icon-container:hover .material-symbols-outlined,
+.nav-icon-container:hover .icon-text {
+    color: #FE6602;
+}
+
+/* overlay effect */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* new page */
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.form-control:focus,
+.form-check-input:focus,
+.form-select:focus,
+.btn:focus {
+    box-shadow: 0 0 0 0.1rem rgba(255, 153, 0, 0.25) !important;
+    border-color: #FE6602 !important;
+}
+
+.btn-close:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.add-btn:hover {
+    background-color: #ee2a37 !important;
+    border: none !important;
+}
+
+/* edit page */
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.edit-btn:hover {
+    background-color: #ee2a37 !important;
+    border: none !important;
+}
+
+/* show page */
+.show-img {
+    height: 30vh;
+}
+
+.edit-img {
+    height: 150px;
+}
+
+a.nav-link:hover {
+    color: #FE6602 !important;
+}
+
+.f-info-socials a {
+    color: #222222;
+    text-decoration: none;
+}
+
+.f-info-socials a:hover {
+    color: #ffc107;
+}
+
+/* Home Page Styles */
+.hero-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-video {
+    width: 78%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    margin: 0 auto;
+}
+
+.feature-card {
+    padding: 1.5rem;
+    height: 100%;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(254, 102, 2, 0.15);
+}
+
+.feature-icon {
+    color: #FE6602;
+    margin-bottom: 1rem;
+}
+
+.btn-lets-see {
+    background-color: #FE6602;
+    color: white;
+    border-radius: 50rem;
+    padding: 12px 35px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 2px solid #FE6602;
+}
+
+.btn-lets-see:hover {
+    background-color: transparent;
+    color: #FE6602;
+}
+
+body.index-page-bg {
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #ffffff;
+}
+
+body.auth-page-bg {
+    background-image: url('/assets/bcglogin.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #ffffff;
+}

@@ -1,0 +1,51 @@
+ <nav class="navbar navbar-expand-md bg-white border-bottom   sticky-top"> <!--  sticky top class is used to make navbar stick to top -->
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="/assets/logo.png" alt="logo" style="height: 3.5rem; object-fit: contain;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings"><b>Explore all</b></a>
+        <span class="nav-link">|</span>
+        <a class="nav-link" href="/listings/new"><b><span class="material-symbols-outlined" style="vertical-align: text-bottom; font-size: 1.2rem; margin-right: 4px;">add_circle</span>List Item</b></a>
+      </div>
+      <div class="d-none d-lg-flex align-items-center mx-auto" style="gap: 15px;">
+        <span class="fw-bold search-label" style="font-size: 0.95rem;">Search Category :</span>
+        <a href="/listings?category=Calculator" class="nav-icon-container">
+            <span class="material-symbols-outlined">calculate</span>
+            <span class="icon-text">Calculators</span>
+        </a>
+        <a href="/listings?category=Books" class="nav-icon-container">
+            <span class="material-symbols-outlined">book_2</span>
+            <span class="icon-text">Books</span>
+        </a>
+        <a href="/listings?category=Notes" class="nav-icon-container">
+            <span class="material-symbols-outlined">description</span>
+            <span class="icon-text">Notes</span>
+        </a>
+        <a href="/listings?category=Electronics" class="nav-icon-container">
+            <span class="material-symbols-outlined">headset_mic</span>
+            <span class="icon-text">Electronics</span>
+        </a>
+        <a href="/listings?category=Apparel" class="nav-icon-container">
+            <span class="material-symbols-outlined">apparel</span>
+            <span class="icon-text">Apparel</span>
+        </a>
+        <a href="/listings?category=Others" class="nav-icon-container">
+            <span class="material-symbols-outlined">question_mark</span>
+            <span class="icon-text">Others</span>
+        </a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <% if(!currUser) { %>
+          <a class="nav-link" href="/signup"><b><span class="material-symbols-outlined" style="vertical-align: text-bottom; font-size: 1.2rem; margin-right: 4px;">login</span>SignUp</b></a>
+          <a class="nav-link" href="/login"><b><span class="material-symbols-outlined" style="vertical-align: text-bottom; font-size: 1.2rem; margin-right: 4px;">login</span>LogIn</b></a>
+        <% } %>
+        <% if(currUser) { %>
+          <a class="nav-link" href="/logout"><b>LogOut</b></a> 
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

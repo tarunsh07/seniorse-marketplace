@@ -1,0 +1,163 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="row mt-4 mb-3">
+            <div class="col-8 offset-2 text-center">
+                <h3 class="fw-bold" style="color: #333;">
+                    <%= listing.title %>
+                </h3>
+                <hr class="mx-auto mt-2" style="width: 60px; border: 2px solid #FE6602; opacity: 1; border-radius: 5px;">
+            </div>
+            <div class="card col-6 offset-3 show-card listing-card">
+                <img src="<%= listing.image.url%>" class="card-img-top show-img" alt="listing_image">
+                <div class="card-body">
+                    <p class="card-text mt-3 text-muted fw-bold mb-1">
+                        Posted by: <%= listing.owner.username %>
+                    </p>
+                    <p class="card-text mb-4">
+                        <%= listing.description %>
+                    </p>
+                    <hr class="mb-4">
+                    <div class="row mb-2">
+                        <div class="col-3 col-lg-2 fw-bold">Price :</div>
+                        <div class="col-9 col-lg-10">
+                            <% if (listing.listingType === 'Free' || listing.price === 0) { %>
+                                <span class="badge rounded-pill bg-success px-3 py-2">Free</span>
+                            <% } else { %>
+                                <div>&#8377 <%= listing.price.toLocaleString("en-IN") %></div>
+                                <div class="mt-1">
+                                    <% if (listing.listingType === 'For Sale') { %>
+                                        <span class="badge rounded-pill px-3 py-2" style="background-color: #FE6602; color: white;">For Sale</span>
+                                    <% } else if (listing.listingType === 'For Rent (Per Day)') { %>
+                                        <span class="badge rounded-pill px-3 py-2" style="background-color: #FD9D04; color: white;">For Rent</span> <span class="fw-bold text-muted ms-1" style="font-size: 0.9rem;">/day</span>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-3 col-lg-2 fw-bold">Category :</div>
+                        <div class="col-9 col-lg-10">
+                            <span class="badge rounded-pill bg-dark px-3 py-2"><%= listing.category %></span>
+                        </div>
+                    </div>
+                    <% if(listing.contact && listing.contact.email) { %>
+                    <div class="row mb-1">
+                        <div class="col-12 mt-3">
+                            <h6 class="fw-bold mb-2">Contact Details:</h6>
+                            <div>
+                                <i class="fa-regular fa-envelope me-2"></i> 
+                                <a href="mailto:<%= listing.contact.email %>" class="text-dark text-decoration-none" style="font-weight: 500;">
+                                    <%= listing.contact.email %>
+                                </a>
+                            </div>
+                            <% if(listing.contact.whatsapp) { %>
+                                <div><i class="fa-brands fa-whatsapp me-2 text-success"></i> <%= listing.contact.whatsapp %></div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+                    <br>
+                </div>
+            </div>
+
+            <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
+                <div class="col-6 offset-3 d-flex justify-content-between mb-3">
+                    <a href="/listings/<%=listing.id%>/edit" class="btn btn-dark edit-btn w-50 me-2">Edit Listing</a>
+                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="w-50 ms-2">
+                        <button class="btn btn-dark w-100 h-100">Delete Listing</button>
+                    </form>
+                </div>
+            <% } %>
+            <div class="col-8 offset-2">
+                <hr>
+                <% if(currUser){%>
+                <h4>Leave a Review</h4>
+                <form action="/listings/<%= listing._id %>/reviews" method="POST" class="mb-3 needs-validation"
+                    novalidate>
+                    <div class="mb-3 mt-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <input type="hidden" name="review[rating]" id="rating-input" value="4">
+                        <ul class="feedback">
+                            <li class="angry">
+                                <div>
+                                    <svg class="eye left"><use xlink:href="#eye"></use></svg>
+                                    <svg class="eye right"><use xlink:href="#eye"></use></svg>
+                                    <svg class="mouth"><use xlink:href="#mouth"></use></svg>
+                                </div>
+                            </li>
+                            <li class="sad">
+                                <div>
+                                    <svg class="eye left"><use xlink:href="#eye"></use></svg>
+                                    <svg class="eye right"><use xlink:href="#eye"></use></svg>
+                                    <svg class="mouth"><use xlink:href="#mouth"></use></svg>
+                                </div>
+                            </li>
+                            <li class="ok">
+                                <div></div>
+                            </li>
+                            <li class="good active">
+                                <div>
+                                    <svg class="eye left"><use xlink:href="#eye"></use></svg>
+                                    <svg class="eye right"><use xlink:href="#eye"></use></svg>
+                                    <svg class="mouth"><use xlink:href="#mouth"></use></svg>
+                                </div>
+                            </li>
+                            <li class="happy">
+                                <div>
+                                    <svg class="eye left"><use xlink:href="#eye"></use></svg>
+                                    <svg class="eye right"><use xlink:href="#eye"></use></svg>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 4" id="eye">
+                                <path d="M1,1 C1.83333333,2.16666667 2.66666667,2.75 3.5,2.75 C4.33333333,2.75 5.16666667,2.16666667 6,1"></path>
+                            </symbol>
+                            <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 7" id="mouth">
+                                <path d="M1,5.5 C3.66666667,2.5 6.33333333,1 9,1 C11.6666667,1 14.3333333,2.5 17,5.5"></path>
+                            </symbol>
+                        </svg>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="comment" class="form-label">Comments</label>
+                        <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control"
+                            required></textarea>
+                        <div class="invalid-feedback">Please submit some comments for review</div>
+                    </div>
+                    <button class="btn btn-outline-dark">Submit</button>
+                </form>
+                <% } %>
+                <hr />
+                <p><b>Comments</b></p>
+                <div class="row">
+                    <% for(review of listing.reviews) { %>
+                        <div class="card col-5 ms-3 mb-3 p-2">
+                            <div class="card-body">
+                                <h5 class="card-title mb-1"><%= review.author.username %></h5>
+                                <p class="card-text mb-1">
+                                    <%= review.comment %>
+                                </p>
+                                <div class="rating-display mb-2">
+                                    <ul class="feedback" style="pointer-events: none; scale: 0.6; transform-origin: left center; height: 40px; margin-top: -10px;">
+                                        <li class="angry <%= review.rating == 1 ? 'active' : '' %>"><div><svg class="eye left"><use xlink:href="#eye"></use></svg><svg class="eye right"><use xlink:href="#eye"></use></svg><svg class="mouth"><use xlink:href="#mouth"></use></svg></div></li>
+                                        <li class="sad <%= review.rating == 2 ? 'active' : '' %>"><div><svg class="eye left"><use xlink:href="#eye"></use></svg><svg class="eye right"><use xlink:href="#eye"></use></svg><svg class="mouth"><use xlink:href="#mouth"></use></svg></div></li>
+                                        <li class="ok <%= review.rating == 3 ? 'active' : '' %>"><div></div></li>
+                                        <li class="good <%= review.rating == 4 ? 'active' : '' %>"><div><svg class="eye left"><use xlink:href="#eye"></use></svg><svg class="eye right"><use xlink:href="#eye"></use></svg><svg class="mouth"><use xlink:href="#mouth"></use></svg></div></li>
+                                        <li class="happy <%= review.rating == 5 ? 'active' : '' %>"><div><svg class="eye left"><use xlink:href="#eye"></use></svg><svg class="eye right"><use xlink:href="#eye"></use></svg></div></li>
+                                    </ul>
+                                </div>
+                                <% if(currUser && review.author._id.equals(currUser._id)) { %>
+                                <form class="mb-0.5 mt-2" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                    <button class="btn btn-sm btn-dark ">Delete</button>
+                                </form>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/js/rating.js"></script>

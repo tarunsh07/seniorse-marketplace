@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row mt-3">
+    <div class="col-8 offset-2">
+    <br>
+    <h3>Edit listing</h3>
+    <div id="priceFlash" class="alert alert-warning alert-dismissible mt-3" style="display: none;">
+        If you are giving it for free, set the price to 0
+        <button type="button" class="btn-close" onclick="document.getElementById('priceFlash').style.display='none'"></button>
+    </div>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required>
+            <div class="valid-feedback">Title looks good!</div>
+            <div class="invalid-feedback">Please enter a title</div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" required><%= listing.description %></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label">Availability Status</label>
+              <div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="listing[isAvailable]" id="available" value="true" <%= listing.isAvailable !== false ? 'checked' : '' %>>
+                      <label class="form-check-label fw-bold" for="available">Available</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="listing[isAvailable]" id="unavailable" value="false" <%= listing.isAvailable === false ? 'checked' : '' %>>
+                      <label class="form-check-label fw-bold text-danger" for="unavailable">Sold OR Rented</label>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="mb-3">
+            Original Listing Image <br>
+            <img src="<%= originalImageUrl %>" class="edit-img">
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input name="listing[image]" type="file" class="form-control">
+          </div>
+          
+          <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" value="<%= listing.price %>" type="text" class="form-control" onfocus="document.getElementById('priceFlash').style.display='block'" required>
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="listingType" class="form-label">Listing Type</label>
+                    <select name="listing[listingType]" id="listingType" class="form-select" required>
+                        <option value="For Sale" <%= listing.listingType === 'For Sale' ? 'selected' : '' %>>For Sale</option>
+                        <option value="For Rent (Per Day)" <%= listing.listingType === 'For Rent (Per Day)' ? 'selected' : '' %>>For Rent (Per Day)</option>
+                        <option value="Free" <%= listing.listingType === 'Free' ? 'selected' : '' %>>Free</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a listing type</div>
+                </div>
+          </div>
+
+          <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select name="listing[category]" id="category" class="form-select" required>
+                  <option value="Calculator" <%= listing.category === 'Calculator' ? 'selected' : '' %>>Calculator</option>
+                  <option value="Books" <%= listing.category === 'Books' ? 'selected' : '' %>>Books</option>
+                  <option value="Notes" <%= listing.category === 'Notes' ? 'selected' : '' %>>Notes</option>
+                  <option value="Electronics" <%= listing.category === 'Electronics' ? 'selected' : '' %>>Electronics</option>
+                  <option value="Apparel" <%= listing.category === 'Apparel' ? 'selected' : '' %>>Apparel</option>
+                  <option value="Others" <%= listing.category === 'Others' ? 'selected' : '' %>>Others</option>
+              </select>
+              <div class="invalid-feedback">Please select a category</div>
+          </div>
+          
+          <hr>
+          <h5>Contact Details</h5>
+          <div class="row">
+              <div class="mb-3 col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input name="listing[contact][email]" value="<%= listing.contact ? listing.contact.email : '' %>" placeholder="Enter Email" type="email" class="form-control" required>
+                  <div class="invalid-feedback">Please provide a valid email</div>
+              </div>
+              <div class="mb-3 col-md-6">
+                  <label for="whatsapp" class="form-label">WhatsApp (Optional)</label>
+                  <input name="listing[contact][whatsapp]" value="<%= listing.contact ? listing.contact.whatsapp : '' %>" placeholder="Enter WhatsApp number" type="text" class="form-control">
+              </div>
+          </div>
+          
+          <button class="btn btn-dark edit-btn mt-3">Save Changes</button>
+    </form>
+    <br>
+    </div>
+    </div>
+</body>  
