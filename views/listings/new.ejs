@@ -65,7 +65,7 @@
           <div class="row">
               <div class="mb-3 col-md-6">
                   <label for="email" class="form-label">Email</label>
-                  <input name="listing[contact][email]" placeholder="Enter Email" type="email" class="form-control" required>
+                  <input name="listing[contact][email]" value="<%= currUser.email %>" type="email" class="form-control" readonly>
                   <div class="invalid-feedback">Please provide a valid email</div>
               </div>
               <div class="mb-3 col-md-6">

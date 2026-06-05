@@ -1,12 +1,12 @@
 <% if(success && success.length) { %>
-<div class="alert alert-success alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
+<div class="alert alert-success alert-dismissible fade show floating-alert" role="alert">
     <%= success %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <% } %>
 
 <% if(error && error.length) { %>
-<div class="alert alert-danger alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
+<div class="alert alert-danger alert-dismissible fade show floating-alert" role="alert">
     <%= error %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -16,9 +16,8 @@
     setTimeout(() => {
         let alerts = document.querySelectorAll('.alert');
         alerts.forEach(alert => {
-            alert.style.transition = "opacity 0.5s ease";
-            alert.style.opacity = "0";
-            setTimeout(() => alert.remove(), 500);
+            alert.style.animation = "slideOutRight 0.4s ease-in forwards";
+            setTimeout(() => alert.remove(), 400);
         });
     }, 3000);
 </script>
