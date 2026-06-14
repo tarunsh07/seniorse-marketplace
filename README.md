@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="public/assets/logo_large.webp" alt="SeniorSe Logo" height="80">
   <h1>SeniorSe — Campus Marketplace for Students</h1>
   <p><strong>A full-stack web application where college students can buy, sell, and exchange pre-owned essentials within their campus network.</strong></p>
 
