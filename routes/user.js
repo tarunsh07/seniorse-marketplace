@@ -4,13 +4,20 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
 const userController = require("../controllers/users.js");
+const rateLimit = require("express-rate-limit");
+
+const signupLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // Limit each IP to 5 requests per windowMs
+    message: "Too many signup attempts from this IP, please try again after 15 minutes."
+});
 
 router.get("/signup" , userController.renderSignupForm);
 
-router.post("/signup" , wrapAsync(userController.signup));
+router.post("/signup" , signupLimiter, wrapAsync(userController.signup));
 
 router.get("/verify-otp", userController.renderVerifyForm);
-router.post("/verify-otp", wrapAsync(userController.verifyOtp));
+router.post("/verify-otp", signupLimiter, wrapAsync(userController.verifyOtp));
 
 router.get("/login" , userController.renderLoginForm);
 
