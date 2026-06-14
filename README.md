@@ -355,7 +355,10 @@ The deployment workflow is as follows:
 
 ## Screenshots
 
-> Screenshots will be added soon.
+<img width="1895" height="931" alt="Screenshot 2026-06-14 143752" src="https://github.com/user-attachments/assets/92213680-bf63-47f1-afd5-cd747d051451" />
+<img width="1891" height="932" alt="Screenshot 2026-06-14 143835" src="https://github.com/user-attachments/assets/3f93abec-c36f-4fbf-8bbc-2844ac50aed0" />
+<img width="1920" height="934" alt="Screenshot (718)" src="https://github.com/user-attachments/assets/121c2f91-2716-4930-9b9a-df59fff154e2" />
+<img width="1918" height="928" alt="Screenshot 2026-06-14 144105" src="https://github.com/user-attachments/assets/68346bb9-64ca-4237-b8f5-eca1e43671d6" />
 
 <!-- 
 Uncomment and add screenshots when available:
