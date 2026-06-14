@@ -8,10 +8,13 @@
       <div class="navbar-nav">
         <a class="nav-link" href="/listings"><b>Explore all</b></a>
         <span class="nav-link">|</span>
-        <a class="nav-link" href="/listings/new"><b><span class="material-symbols-outlined" style="vertical-align: text-bottom; font-size: 1.2rem; margin-right: 4px;">add_circle</span>List Item</b></a>
+        <a class="nav-link list-item-link" href="/listings/new"><b><span class="material-symbols-outlined" style="vertical-align: text-bottom; font-size: 1.2rem; margin-right: 4px;">add_circle</span>List Item</b></a>
       </div>
+      <form class="d-flex ms-3 d-none d-md-flex" role="search" action="/listings" method="GET">
+        <input class="form-control me-2 rounded-pill px-3" type="search" placeholder="Search items..." aria-label="Search" name="q" style="font-size: 0.9rem; border: 1px solid #FE6602;">
+        <button class="btn rounded-pill fw-bold px-3" style="background-color: #FE6602; color: white; font-size: 0.9rem;" type="submit">Search</button>
+      </form>
       <div class="d-none d-lg-flex align-items-center mx-auto" style="gap: 15px;">
-        <span class="fw-bold search-label" style="font-size: 0.95rem;">Search Category :</span>
         <a href="/listings?category=Calculator" class="nav-icon-container">
             <span class="material-symbols-outlined">calculate</span>
             <span class="icon-text">Calculators</span>

@@ -5,6 +5,8 @@
         let headingText = "All Listed Stuff";
         if (typeof category !== 'undefined' && category) {
             headingText = "Listed " + category;
+        } else if (typeof q !== 'undefined' && q) {
+            headingText = "Search Results for '" + q + "'";
         }
     %>
     <div class="text-center mt-4 mb-4">

@@ -181,6 +181,14 @@ a.nav-link:hover {
     color: #FE6602 !important;
 }
 
+a.list-item-link {
+    color: #FE6602 !important;
+}
+
+a.list-item-link:hover {
+    color: #000000 !important;
+}
+
 .f-info-socials a {
     color: #222222;
     text-decoration: none;
