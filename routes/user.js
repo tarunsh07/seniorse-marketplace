@@ -7,8 +7,8 @@ const userController = require("../controllers/users.js");
 const rateLimit = require("express-rate-limit");
 
 const signupLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // Limit each IP to 5 requests per windowMs
+    windowMs: 15 * 60 * 1000, 
+    max: 5, 
     message: "Too many signup attempts from this IP, please try again after 15 minutes."
 });
 

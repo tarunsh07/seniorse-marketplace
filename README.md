@@ -60,11 +60,13 @@ This platform provides a trusted, students-only environment where users can list
 | **Full CRUD Operations** | Create, Read, Update, and Delete listings with image uploads |
 | **Cloud Image Storage** | All listing images are uploaded to and served from Cloudinary CDN |
 | **Category Filtering** | Filter listings by category (Calculator, Books, Notes, Electronics, Apparel, Others) via navbar icons |
+| **Full-Text Search** | Search listings dynamically by title or description using case-insensitive MongoDB Regex matching |
 | **Listing Types** | Support for three listing types — *For Sale*, *For Rent (Per Day)*, and *Free* |
 | **Availability Status** | Owners can toggle availability; unavailable items are visually greyed out with a "Not Available" overlay |
 | **Review and Rating System** | Logged-in users can leave reviews with an interactive animated emoji-based rating picker (1-5 scale) |
 | **Authorization Guards** | Only listing owners can edit/delete their listings; only review authors can delete their reviews |
 | **Server-Side Validation** | Joi schema validation on both listings and reviews to prevent malformed data |
+| **Rate Limiting** | `express-rate-limit` middleware on authentication routes to prevent brute-force and spam attacks |
 | **Contact Integration** | Sellers provide email (mailto link) and optional WhatsApp number on each listing |
 | **Flash Messages** | User-friendly success/error notifications using `connect-flash` |
 | **Post-Login Redirect** | Users are redirected back to the page they originally intended to visit after login |
@@ -86,6 +88,7 @@ This platform provides a trusted, students-only environment where users can list
 | **Passport.js** | Authentication middleware |
 | **Brevo API** | Sending OTP emails via HTTP to bypass cloud SMTP restrictions |
 | **Joi** | Request payload validation |
+| **Express Rate Limit**| API rate limiting to prevent brute-force attacks |
 | **Multer** | Multipart form-data / file upload handling |
 
 ### Frontend
@@ -376,7 +379,7 @@ Uncomment and add screenshots when available:
 ## Future Enhancements
 
 - [ ] Real-time chat between buyers and sellers using WebSockets (Socket.io)
-- [ ] Full-text search with fuzzy matching across listings
+- [x] Full-text search with fuzzy matching across listings
 - [ ] Advanced filtering (price range, availability, listing type)
 - [ ] User profile pages with listing history
 - [ ] Image carousel for multi-image listings
